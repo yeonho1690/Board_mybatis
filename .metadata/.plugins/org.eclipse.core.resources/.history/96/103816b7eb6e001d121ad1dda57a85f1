@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.mvc.mapper.BoardMapper">
+  
+ 
+    <!-- 게시판 등록 -->
+    <insert id="enroll" parameterType="com.mvc.mapper.BoardMapper">
+        
+        insert into board(title, content, writer) values (#{title}, #{content}, #{writer})
+        
+    </insert>
+    
+    <!-- 게시판 목록 -->
+    <select id="getList" parameterType="com.mvc.mapper.BoardMapper" resultType="BoardVO">
+
+        select * from board
+    
+    </select>
+    
+    <!-- 게시글 조회 -->
+    <select id="getPage" parameterType="com.mvc.mapper.BoardMapper" resultType="BoardVO">
+    
+        select * from board where bno = #{bno}
+    
+    </select>
+ 
+ 	<!-- 게시판 수정 -->
+    <update id="modify" parameterType="com.mvc.mapper.BoardMapper">
+    
+        update board set title = #{title}, content = #{content}, updatedate = now() where bno = #{bno}
+        
+    </update>
+    
+    <!-- 게시글 삭제 -->
+    <delete id="delete" parameterType="com.mvc.mapper.BoardMapper">
+    
+    	delete from board where bno = #{bno}
+    	
+    </delete>
+    
+    <!-- 페이징 -->
+    <select id="getListPaging" parameterType="com.mvc.mapper.BoardMapper" resultType="BoardVO">
+    
+    	select * from (
+    				select bno, title, writer, regdate, updatedate
+    				from board 
+    				<if test="keyword != null and ">
+                    	where title like concat('%',#{keyword},'%' )
+                	</if>
+    				order by bno desc) as T1
+    	limit #{skip}, #{amount}
+    
+    </select>
+    
+    <!-- 게시글 총 갯수 -->
+    <select id="getTotal" resultType="int">
+    
+    	select count(*) from board
+    		<if test="keyword != null">
+    			where title like concat('%', #{keyword}, '%')
+    		</if>
+    
+    </select> 
+    
+  </mapper>
+  
+ <!--  parameterType="BoardVo" -->
+ <!-- parameterType="BoardMapper" -->
+ <!-- Integer,String -->
