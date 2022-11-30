@@ -124,14 +124,14 @@
 		</section>
 	</section>
 	<section name="org.eclipse.text.quicksearch.internal.ui.QuickSearchDialog.DIALOG_SETTINGS">
-		<item key="LAST_QUERY" value="getListPaging"/>
+		<item key="LAST_QUERY" value="log4j"/>
 		<item key="PATH_FILTER" value=""/>
 		<item key="CASE_SENSITIVE" value="true"/>
 		<item key="KEEP_OPEN" value="false"/>
 		<list key="COLUMN_WIDTHS">
 			<item value="40"/>
 			<item value="400"/>
-			<item value="118"/>
+			<item value="101"/>
 		</list>
 		<list key="SASH_WEIGHTS">
 			<item value="714"/>

@@ -2,10 +2,10 @@ package com.mvc.model;
 
 import java.util.Date;
 
-//import org.apache.ibatis.type.Alias;
+import javax.validation.constraints.NotEmpty;
 
-import lombok.Getter;
-import lombok.Setter;
+//import org.apache.ibatis.type.Alias;
+import lombok.*;
 
 //@Alias
 @Getter @Setter
@@ -15,12 +15,15 @@ public class BoardVO {
     private int bno;
     
     // 게시판 제목 
+    @NotEmpty(message = "제목은 필수입니다!!!")
     private String title;
     
     // 게시판 내용 
+    @NotEmpty(message = "내용은 필수입니다!!!")
     private String content;
     
     // 게시판 작성자
+    @NotEmpty(message = "작성자는 필수입니다!!!")
     private String writer;
     
     // 등록 날짜

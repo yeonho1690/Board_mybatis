@@ -68,7 +68,7 @@
     			where writer like concat('%', #{keyword}, '%')
     		</if>
     
-    </select> 
+    </select>
     
   </mapper>
   

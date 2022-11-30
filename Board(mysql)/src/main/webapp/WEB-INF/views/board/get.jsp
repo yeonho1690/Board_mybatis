@@ -99,35 +99,10 @@
 .btn_line:hover{color:#666;background:#fff}
 .btn_line.btn_gray{color:#666;border-color:#999}
 .btn_line.btn_gray:hover{color:#fff;background:#999}
-.boardDetail {
-        width: 1100px;
-        margin: auto;
-        margin-bottom: 300px;
-        padding-top: 70px;
-    }
-.boardDetail table tbody tr th{
-    background-color: whitesmoke;
-    font-size: 15px;
-    font-family: '굴림';
-}
-.boardDetail table{
-    border-collapse: collapse;
-    width: 100%;
-    margin: auto;
-    border-collapse: collapse;
-    font-size: 14px;    
-}
-.boardDetail table tbody tr td{
-    border-bottom: 1px solid rgb(224, 224, 224);
-    padding: 10px;
-}
-.boardDetail table tbody tr th{
-    border-bottom: 1px solid rgb(224, 224, 224);
-    padding: 10px;
-    width:100px;
-}
-.boardDetail input{
-	width:950px;
-}
-
+.boardDetail {width: 1100px;margin: auto;margin-bottom: 300px;padding-top: 70px;}
+.boardDetail table tbody tr th{background-color: whitesmoke;font-size: 15px;font-family: '굴림';}
+.boardDetail table{border-collapse: collapse;width: 100%;margin: auto;border-collapse: collapse;font-size: 14px;    }
+.boardDetail table tbody tr td{border-bottom: 1px solid rgb(224, 224, 224);padding: 10px;}
+.boardDetail table tbody tr th{border-bottom: 1px solid rgb(224, 224, 224);padding: 10px;width:100px;}
+.boardDetail input{width:950px;}
 </style>

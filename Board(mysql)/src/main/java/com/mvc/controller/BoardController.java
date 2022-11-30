@@ -1,5 +1,6 @@
 package com.mvc.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+//import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mvc.model.BoardVO;
@@ -109,15 +110,18 @@ public class BoardController {
 	}
 
 	
-	// 엑셀 다운로드
+	//엑셀 다운로드
 	@GetMapping("/excel/download")
 	public void excelDownload(HttpServletResponse response,Paging page ) throws Exception{
+		//날짜 형식 포맷
+		SimpleDateFormat sd = new SimpleDateFormat("yyyy/MM/dd");
+		
 		Workbook workbook = new XSSFWorkbook();
 		Sheet sheet = workbook.createSheet("게시판 목록"); //시트 이름
 		
 		List<BoardVO> list = bservice.getList();//엑셀 파일에 넣을 값
-		List<BoardVO> list2 = bservice.getListPaging(page);
-		//excel 헤더 값 가져오기
+//		List<BoardVO> list2 = bservice.getListPaging(page);
+		//excel 헤더 값 넣기
 		int rowNum = 0;
 		Row header = sheet.createRow(rowNum++);
 		
@@ -130,6 +134,10 @@ public class BoardController {
 	    cell.setCellValue("제목");
 	    cell = header.createCell(2);
 	    cell.setCellValue("작성자");
+	    cell = header.createCell(3);
+	    cell.setCellValue("작성일");
+	    cell = header.createCell(4);
+	    cell.setCellValue("수정일");
 	    
 		//Body 부분 생성
 	    for(BoardVO vo : list) {
@@ -140,6 +148,10 @@ public class BoardController {
 	    	cell.setCellValue(vo.getTitle());
 	    	cell = bodyRow.createCell(2);
 	    	cell.setCellValue(vo.getWriter());
+	    	cell = bodyRow.createCell(3);
+	    	cell.setCellValue(sd.format(vo.getRegdate()));
+	    	cell = bodyRow.createCell(4);
+	    	cell.setCellValue(sd.format(vo.getUpdateDate()));
 	    }
 	    
 	    //컨텐츠 타입 및 파일명 지정
