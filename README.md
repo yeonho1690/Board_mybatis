@@ -1,4 +1,4 @@
-# Board
+# Board :rocket:
 
 ## Technology Stack
 - mybatis
